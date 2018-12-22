@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>ChartJS TEST</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <canvas id="myChart" width="600" height="400"></canvas>
+      <script>
+        var myChartCanvas = document.getElementById("myChart");
+
+        Chart.defaults.global.defaultFontFamily = "Lato";
+        Chart.defaults.global.defaultFontSize = 18;
+
+        var myChartData = {
+          labels: ["0s", "10s", "20s", "30s", "40s", "50s", "60s"],
+          datasets:[
+            {
+              label:"시간별 용량",
+              data:[0, 59, 75, 20, 20, 55, 40],
+              lineTension:0,
+              fill:false,
+              borderColor:'orange',
+              backgroundColor:'transparent',
+              borderDash:[5, 5],
+              pointBorderColor:'orange',
+              pointBackgroundColor:'rgba(255,150,0,0.5)',
+              pointRadius:5,
+              pointHoverRadius:10,
+              pointHitRadius:30,
+              pointBorderWidth:2,
+              pointStyle:'rectRounded'
+            }
+          ]
+        };
+        var myChartOptions = {
+          legend:{
+            display:true,
+            position:'top',
+            labels:{
+              boxWidth: 80,
+              fontColor: 'black'
+            }
+          }
+        };
+        var lineChart = new Chart(myChartCanvas, {
+          type: 'line',
+          data: myChartData,
+          options: myChartOptions
+        });
+      </script>
+<hr>
+      <canvas id="speedChart" width="600" height="400"></canvas>
+      <script>
+        var speedCanvas =
+        document.getElementById("speedChart");
+        Chart.defaults.global.defaultFontFamily = "Lato";
+        Chart.defaults.global.defaultFontSize = 18;
+
+        var dataFirst = {
+          label: "DATA 1 psec",
+          data: [0, 59, 75, 20, 20, 55, 40],
+          lineTension:0.3,
+          fill:false,
+          borderColor:'red',
+          backgroundColor:'transparent',
+          pointBorderColor:'red',
+          pointBackgroundColor:'lightgreen',
+          pointRadius:5,
+          pointHoverRadius:15,
+          pointHitRadius:30,
+          pointBorderWidth:2,
+          pointStyle:'rect'
+        };
+        var dataSecond = {
+          label: "DATA 1 psec",
+          data: [20, 15, 60, 60, 65, 30, 70],
+          lineTension:0.3,
+          fill:false,
+          borderColor:'purple',
+          backgroundColor:'transparent',
+          pointBorderColor:'purple',
+          pointBackgroundColor:'lightgreen',
+          pointRadius:5,
+          pointHoverRadius:15,
+          pointHitRadius:30,
+          pointBorderWidth:2,
+        };
+
+        var speedData = {
+          labels:["0s","10s","20s","30s","40s","50s","60s"],
+          datasets:[dataFirst,dataSecond]
+        };
+
+        var chartOptions = {
+          legend:{
+            display:true,
+            position:'top',
+            labels:{
+              boxWidth:80,
+              fontColor:'black'
+            }
+          }
+        };
+
+        var lineCharttwo = new Chart(speedCanvas, {
+          type:'line',
+          data:speedData,
+          options: chartOptions
+        });
+      </script>
+<hr>
+      <canvas id="densityChart" width="600" height="400"></canvas>
+      <script>
+        var densityCanvas = document.getElementById("densityChart");
+        Chart.defaults.global.defaultFontFamily = "Lato";
+        Chart.defaults.global.defaultFontSize = 18;
+
+        var densityData = {
+          label: '날짜별 열량',
+          data: [5427, 3000, 2000, 2500, 3000, 2424, 1717,7423],
+          backgroundColor: [
+            'rgba(0, 99, 132, 0.6)',
+            'rgba(30, 99, 132, 0.6)',
+            'rgba(60, 99, 132, 0.6)',
+            'rgba(90, 99, 132, 0.6)',
+            'rgba(120, 99, 132, 0.6)',
+            'rgba(150, 99, 132, 0.6)',
+            'rgba(180, 99, 132, 0.6)',
+            'rgba(210, 99, 132, 0.6)',
+            'rgba(240, 99, 132, 0.6)'
+          ],
+          borderColor: [
+            'rgba(0, 99, 132, 1)',
+            'rgba(30, 99, 132, 1)',
+            'rgba(60, 99, 132, 1)',
+            'rgba(90, 99, 132, 1)',
+            'rgba(120, 99, 132, 1)',
+            'rgba(150, 99, 132, 1)',
+            'rgba(180, 99, 132, 1)',
+            'rgba(210, 99, 132, 1)',
+            'rgba(240, 99, 132, 1)'
+          ],
+          borderWidth: 2,
+          hoverBorderWidth: 0
+        };
+
+        var chartOptions = {
+          scales:{
+            yAxes:[
+              {
+                barPercentage: 0.5
+              }
+            ]
+          },
+          elements: {
+            rectangle: {
+              borderSkipped:'left',
+            }
+          }
+        };
+        var barChart = new Chart(densityCanvas,{
+          type:'horizontalBar',
+          data: {
+            labels: ["1월","2월","3월","4월","5월","6월","7월","8월"],
+            datasets:[densityData],
+          },
+          options: chartOptions
+        });
+      </script>
+    </div>
+  </body>
+</html>
