@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>radar chartjs</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
+
+   <canvas id="marksChart" width="600" height="400" style="margin-top:100px;"></canvas>
+   <script>
+        var marksCanvas = document.getElementById("marksChart");
+
+        var marksData = {
+        labels: ["고훈영", "염유진", "김용정", "우동근", "김형석", "최지훈"],
+        datasets: [{
+          label: "Grade1",
+          data: [65, 75, 70, 80, 60, 80],
+          backgroundColor: "transparent",
+           borderColor: "rgba(200,0,0,0.6)",
+           fill: false,
+           radius: 6,
+           pointRadius: 6,
+           pointBorderWidth: 3,
+           pointBackgroundColor: "orange",
+           pointBorderColor: "rgba(200,0,0,0.6)",
+           pointHoverRadius: 10
+        }, {
+          label: "Grade4",
+          data: [54, 65, 60, 70, 70, 75],
+          backgroundColor: "transparent",
+          borderColor: "rgba(0,0,200,0.6)",
+          fill: false,
+          radius: 6,
+          pointRadius: 6,
+          pointBorderWidth: 3,
+          pointBackgroundColor: "cornflowerblue",
+          pointBorderColor: "rgba(0,0,200,0.6)",
+          pointHoverRadius: 10
+        }]
+        };
+
+        var chartOptions = {
+          scale: {
+            ticks:{
+            beginAtZero:true,
+            min:0,
+            max:100,
+            stepSize:20
+          },
+          pointLabels:{
+            fontSize:18
+          }
+        },
+        legend:{
+          position: 'left'
+        }
+      };
+        var radarChart = new Chart(marksCanvas, {
+        type: 'radar',
+        data: marksData,
+        options: chartOptions
+        });
+   </script>
+  </body>
+</html>
