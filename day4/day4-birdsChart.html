@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>birdsChart</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
+    <canvas id="birdsChart" width="600" height="400"></canvas>
+    <script>
+      var birdsCanvas = document.getElementById("birdsChart");
+
+Chart.defaults.global.defaultFontFamily = "Lato";
+Chart.defaults.global.defaultFontSize = 18;
+
+var birdsData = {
+  labels: ["Spring", "sdafsfasf", "Fall", "Winter"],
+  datasets: [{
+    data: [1200, 1700, 800, 200],
+    backgroundColor: [
+      "rgba(255, 0, 0, 0.6)",
+      "rgba(0, 255,200, 0.6)",
+      "rgba(200, 0, 200, 0.6)",
+      "rgba(0, 255, 0, 0.6)"
+    ],
+    borderColor: "rgba(0, 0, 0, 0.8)"
+  }]
+};
+
+var chartOptions = {
+  startAngle: -Math.PI / 4,
+  legend: {
+    position: 'left'
+  },
+  animation: {
+    animateRotate: false
+  }
+};
+
+var polarAreaChart = new Chart(birdsCanvas, {
+  type: 'polarArea',
+  data: birdsData,
+  options: chartOptions
+});
+    </script>
+  </body>
+</html>
